@@ -19,3 +19,10 @@ jobs:
         dotnet-version: 3.1.101
     - name: Build with dotnet
       run: dotnet build --configuration Release
+    - name: Docker Action
+      uses: zenato/docker-action@v1.0.0
+      with:
+        username: ${{ secrets.docker_username }}
+        password: ${{ secrets.docker_password }}
+        repository: rcwowbagger/raspberry
+      
