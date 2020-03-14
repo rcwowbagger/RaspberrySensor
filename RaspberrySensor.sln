@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E24B4BE4-1BAE-4DBC-B037-331392A3A8BB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RaspberrySensor", "src\RaspberrySensor\RaspberrySensor.csproj", "{08227BDE-39D2-462D-BDF1-49B342972D56}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E17638CD-A1CB-4FD8-96C2-57FD9AFE1F15}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RaspberrySensorTest", "test\RaspberrySensorTest\RaspberrySensorTest.csproj", "{958A7CF0-482B-415B-BC5A-7E97D0F3C8FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7AE65137-8B6D-4FC2-9E94-C71C07B093A0}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08227BDE-39D2-462D-BDF1-49B342972D56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08227BDE-39D2-462D-BDF1-49B342972D56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08227BDE-39D2-462D-BDF1-49B342972D56}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{08227BDE-39D2-462D-BDF1-49B342972D56}.Debug|x64.Build.0 = Debug|Any CPU
+		{08227BDE-39D2-462D-BDF1-49B342972D56}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{08227BDE-39D2-462D-BDF1-49B342972D56}.Debug|x86.Build.0 = Debug|Any CPU
+		{08227BDE-39D2-462D-BDF1-49B342972D56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08227BDE-39D2-462D-BDF1-49B342972D56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08227BDE-39D2-462D-BDF1-49B342972D56}.Release|x64.ActiveCfg = Release|Any CPU
+		{08227BDE-39D2-462D-BDF1-49B342972D56}.Release|x64.Build.0 = Release|Any CPU
+		{08227BDE-39D2-462D-BDF1-49B342972D56}.Release|x86.ActiveCfg = Release|Any CPU
+		{08227BDE-39D2-462D-BDF1-49B342972D56}.Release|x86.Build.0 = Release|Any CPU
+		{958A7CF0-482B-415B-BC5A-7E97D0F3C8FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{958A7CF0-482B-415B-BC5A-7E97D0F3C8FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{958A7CF0-482B-415B-BC5A-7E97D0F3C8FD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{958A7CF0-482B-415B-BC5A-7E97D0F3C8FD}.Debug|x64.Build.0 = Debug|Any CPU
+		{958A7CF0-482B-415B-BC5A-7E97D0F3C8FD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{958A7CF0-482B-415B-BC5A-7E97D0F3C8FD}.Debug|x86.Build.0 = Debug|Any CPU
+		{958A7CF0-482B-415B-BC5A-7E97D0F3C8FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{958A7CF0-482B-415B-BC5A-7E97D0F3C8FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{958A7CF0-482B-415B-BC5A-7E97D0F3C8FD}.Release|x64.ActiveCfg = Release|Any CPU
+		{958A7CF0-482B-415B-BC5A-7E97D0F3C8FD}.Release|x64.Build.0 = Release|Any CPU
+		{958A7CF0-482B-415B-BC5A-7E97D0F3C8FD}.Release|x86.ActiveCfg = Release|Any CPU
+		{958A7CF0-482B-415B-BC5A-7E97D0F3C8FD}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{08227BDE-39D2-462D-BDF1-49B342972D56} = {E24B4BE4-1BAE-4DBC-B037-331392A3A8BB}
+		{958A7CF0-482B-415B-BC5A-7E97D0F3C8FD} = {E17638CD-A1CB-4FD8-96C2-57FD9AFE1F15}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2E11EEE1-78CF-470B-94BF-C97D92F7CC6F}
+	EndGlobalSection
+EndGlobal
