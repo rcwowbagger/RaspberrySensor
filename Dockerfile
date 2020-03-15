@@ -15,5 +15,6 @@ RUN dotnet publish . -c Release -o out
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/out .
+RUN chmod +x /app/RaspberrySensor.dll
 
 ENTRYPOINT ["dotnet", "RaspberrySensor.dll"]
