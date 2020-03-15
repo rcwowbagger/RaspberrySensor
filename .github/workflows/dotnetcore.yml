@@ -23,7 +23,7 @@ jobs:
       uses: zenato/docker-action@v1.0.0
       with:
         username: ${{ secrets.docker_username }}
-        password: ${{ secrets.docker_password }}
+        password: ${{ secrets.docker_key }}
         repository: rcwowbagger/raspberry
         tag: latest
       
