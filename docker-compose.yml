@@ -1,8 +1,0 @@
-version: '3.4'
-
-services:
-  raspberrysensor:
-    image: ${DOCKER_REGISTRY-}raspberrysensor
-    build:
-      context: .
-      dockerfile: src/RaspberrySensor/Dockerfile
