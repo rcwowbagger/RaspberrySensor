@@ -10,6 +10,7 @@ RUN dotnet restore
 	
 FROM build AS publish
 RUN dotnet publish . -c Release -o out
+#RUN ls -l out
 
 FROM base AS final
 WORKDIR /app
