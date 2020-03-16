@@ -3,6 +3,7 @@ using Serilog;
 using System;
 using System.Timers;
 using Unosquare.RaspberryIO;
+using Unosquare.WiringPi;
 
 namespace RaspberrySensor
 {
@@ -19,6 +20,7 @@ namespace RaspberrySensor
                 .CreateLogger();
             _logger = Log.Logger.ForContext<Program>();
 
+            Pi.Init<BootstrapWiringPi>();
 
             _dht = new DHT(Pi.Gpio[7], DHTSensorTypes.DHT22);
             _logger.Information("Sensor setup...complete");
