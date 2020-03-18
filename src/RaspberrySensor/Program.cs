@@ -20,14 +20,14 @@ namespace RaspberrySensor
             _logger = Log.Logger.ForContext<Program>();
 
             Pi.Init<BootstrapWiringPi>();
-
-            _dht = new DHT(Pi.Gpio[7], DHTSensorTypes.DHT22);
+            //_logger.Information(Pi.Info.ToString());
+            _dht = new DHT(Pi.Gpio[4], DHTSensorTypes.DHT22);
             _logger.Information("Sensor setup...complete");
             SetTimer(5000);
 
             while(true)
             {
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(100);
             }
         }
 
@@ -48,7 +48,7 @@ namespace RaspberrySensor
             };
             _sampleTimer.Elapsed += (a, b) =>
             {
-                _logger.Information("Timer Elapsed...");
+                _logger.Debug("Timer Elapsed...");
                 try
                 {
                     var d = _dht.ReadData();
@@ -57,7 +57,6 @@ namespace RaspberrySensor
                 }
                 catch (DHTException)
                 {
-                    _logger.Warning("Ex");
                 }
             };
         }
