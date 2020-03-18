@@ -1,6 +1,7 @@
 ﻿using ReaspberrySensor.DHT;
 using Serilog;
 using System;
+using System.Threading;
 using System.Timers;
 using Unosquare.RaspberryIO;
 using Unosquare.WiringPi;
@@ -26,7 +27,10 @@ namespace RaspberrySensor
             _logger.Information("Sensor setup...complete");
             SetTimer(5000);
 
-            Console.Read();
+            while(true)
+            {
+                Thread.Sleep(1000);
+            }
         }
 
         private static void SetTimer(int intervalMs)
