@@ -1,7 +1,5 @@
 ﻿using ReaspberrySensor.DHT;
 using Serilog;
-using System;
-using System.Threading;
 using System.Timers;
 using Unosquare.RaspberryIO;
 using Unosquare.WiringPi;
@@ -29,7 +27,7 @@ namespace RaspberrySensor
 
             while(true)
             {
-                Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(1000);
             }
         }
 
