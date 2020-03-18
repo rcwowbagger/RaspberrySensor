@@ -46,7 +46,7 @@ namespace RaspberrySensor
             };
             _sampleTimer.Elapsed += (a, b) =>
             {
-                _logger.Debug("Timer Elapsed...");
+                _logger.Information("Timer Elapsed...");
                 try
                 {
                     var d = _dht.ReadData();
@@ -55,6 +55,7 @@ namespace RaspberrySensor
                 }
                 catch (DHTException)
                 {
+                    _logger.Warning("Ex");
                 }
             };
         }
