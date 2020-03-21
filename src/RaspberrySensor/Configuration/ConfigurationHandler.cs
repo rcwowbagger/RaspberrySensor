@@ -3,7 +3,6 @@ using Microsoft.Extensions.Configuration.Json;
 using Microsoft.Extensions.FileProviders;
 using System;
 using System.ComponentModel;
-using System.Linq;
 
 namespace RaspberrySensor.Configuration
 {

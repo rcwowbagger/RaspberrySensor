@@ -28,7 +28,9 @@ namespace RaspberrySensor
             if (ConfigurationHandler.Get<bool>("SamplingEnabled"))
             {
                 Pi.Init<BootstrapWiringPi>();
-                _device = new DHT(Pi.Gpio[4], DHTSensorTypes.DHT22);
+                _device = new DHT(
+                    Pi.Gpio[ConfigurationHandler.Get<int>("GpioPin")], 
+                    ConfigurationHandler.Get<DHTSensorTypes>("DhtDevice"));
             }
             else
             {
