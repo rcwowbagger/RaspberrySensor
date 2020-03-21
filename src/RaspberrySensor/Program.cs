@@ -2,6 +2,7 @@
 using RaspberrySensor.Device;
 using RaspberrySensor.Device.DHT;
 using Serilog;
+using System;
 using System.Timers;
 using Unosquare.RaspberryIO;
 using Unosquare.WiringPi;
@@ -11,7 +12,7 @@ namespace RaspberrySensor
     class Program
     {
         private static Timer _sampleTimer;
-        private static IDevice _dht;
+        private static IDevice _device;
         private static ILogger _logger;
 
         static void Main(string[] args)
@@ -24,16 +25,16 @@ namespace RaspberrySensor
 
 
 
-            if (ConfigurationHandler.Get<bool>("SamplingEnamed"))
+            if (ConfigurationHandler.Get<bool>("SamplingEnabled"))
             {
                 Pi.Init<BootstrapWiringPi>();
-                _dht = new DHT(Pi.Gpio[4], DHTSensorTypes.DHT22);
+                _device = new DHT(Pi.Gpio[4], DHTSensorTypes.DHT22);
             }
             else
             {
-                _dht = new DummyDevice();
+                _device = new DummyDevice();
             }
-            _logger.Information("Sensor setup...complete");
+            _logger.Information("Sensor setup complete");
             SetTimer(ConfigurationHandler.Get<int>("SampleIntervalSec") * 1000);
 
             while(true)
@@ -62,13 +63,18 @@ namespace RaspberrySensor
                 _logger.Debug("Timer Elapsed...");
                 try
                 {
-                    var d = _dht.ReadData();
+                    var d = _device.ReadData();
 
                     _logger.Information(d.ToString());
                 }
                 catch (DHTException)
                 {
                 }
+                catch(Exception ex)
+                {
+                    _logger.Error(ex, "Error reading from device");
+                }
+                _sampleTimer.Interval = ConfigurationHandler.Get<int>("SampleIntervalSec")*1000;
             };
         }
     }

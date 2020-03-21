@@ -47,7 +47,7 @@ namespace RaspberrySensor.Configuration
             {
                 throw e;
             }
-            catch (InvalidCastException ex)
+            catch (ArgumentException ex)
             {
                 throw new Exception($"Can't cast value for key {key} to Type {typeof(T)}", ex);
             }
