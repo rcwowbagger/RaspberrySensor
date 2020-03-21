@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ReaspberrySensor.DHT
+namespace RaspberrySensor.Device.DHT
 {
     public class DHTDatum : IDataPoint
     {
@@ -14,7 +14,7 @@ namespace ReaspberrySensor.DHT
         public double HeatIndex { get; set; }
         public string Device { get => _device; }
 
-        string _device = Environment.MachineName;
+        readonly string _device = Environment.MachineName;
 
         public Dictionary<string, object> GetMeasurements()
         {

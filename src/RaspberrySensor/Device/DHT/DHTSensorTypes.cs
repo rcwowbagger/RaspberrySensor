@@ -1,4 +1,4 @@
-﻿namespace ReaspberrySensor.DHT
+﻿namespace RaspberrySensor.Device.DHT
 {
     public enum DHTSensorTypes
     {

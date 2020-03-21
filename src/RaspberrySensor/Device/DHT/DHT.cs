@@ -2,11 +2,10 @@
 using System;
 using System.Threading;
 using Unosquare.RaspberryIO.Abstractions;
-using Unosquare.WiringPi;
 
-namespace ReaspberrySensor.DHT
+namespace RaspberrySensor.Device.DHT
 {
-    public class DHT
+    public class DHT : IDevice
     {
         private readonly ILogger _logger = Log.ForContext<DHT>();
 
@@ -37,9 +36,9 @@ namespace ReaspberrySensor.DHT
                     _dataPin.PinMode = GpioPinDriveMode.Output;
                     _dataPin.Write(GpioPinValue.High);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    _logger.Error(ex,"Error in DHT setup");
+                    _logger.Error(ex, "Error in DHT setup");
                 }
             }
             else
@@ -48,7 +47,7 @@ namespace ReaspberrySensor.DHT
             }
         }
 
-        public DHTDatum ReadData()
+        public IDataPoint ReadData()
         {
             float t = 0;
             float h = 0;
@@ -89,12 +88,12 @@ namespace ReaspberrySensor.DHT
             throw new DHTException();
         }
 
-        float ConvertCtoF(float c)
+        static float ConvertCtoF(float c)
         {
             return c * 9 / 5 + 32;
         }
 
-        float ConvertFtoC(float f)
+        static float ConvertFtoC(float f)
         {
             return (f - 32) * 5 / 9;
         }

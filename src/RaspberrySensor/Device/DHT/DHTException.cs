@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ReaspberrySensor.DHT
+namespace RaspberrySensor.Device.DHT
 {
     public class DHTException : Exception { }
 }

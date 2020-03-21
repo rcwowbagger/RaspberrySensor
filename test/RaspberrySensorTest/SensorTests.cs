@@ -3,7 +3,7 @@ using Xunit;
 
 namespace RaspberrySensorTest
 {
-    public class UnitTest1
+    public class SensorTests
     {
         [Fact]
         public void Test1()
