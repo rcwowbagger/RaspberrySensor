@@ -1,7 +1,9 @@
 ﻿using RaspberrySensor.Configuration;
 using RaspberrySensor.Device;
 using RaspberrySensor.Device.DHT;
+using RaspberrySensor.Publisher;
 using Serilog;
+using Serilog.Core;
 using System;
 using System.Timers;
 using Unosquare.RaspberryIO;
@@ -14,15 +16,15 @@ namespace RaspberrySensor
         private static Timer _sampleTimer;
         private static IDevice _device;
         private static ILogger _logger;
-
+        private static IPublisher _publisher;
         static void Main(string[] args)
         {
+            ConfigurationHandler.Initialise();
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.Console()
+                .MinimumLevel.Debug()
                 .CreateLogger();
             _logger = Log.Logger.ForContext<Program>();
-            ConfigurationHandler.Initialise();
-
 
 
             if (ConfigurationHandler.Get<bool>("SamplingEnabled"))
@@ -36,6 +38,17 @@ namespace RaspberrySensor
             {
                 _device = new DummyDevice();
             }
+            var publishKey = ConfigurationHandler.Get<string>("PublishKey");
+            var connectionString = ConfigurationHandler.Get<string>("EventHubAddress");
+
+            if (ConfigurationHandler.Get<bool>("EventHubEnabled"))
+            {
+                _publisher = new EventHubPublisher(connectionString, publishKey);
+            }
+            else
+            {
+                _publisher = new DummyPublisher();
+            }
             _logger.Information("Sensor setup complete");
             SetTimer(ConfigurationHandler.Get<int>("SampleIntervalSec") * 1000);
 
@@ -47,7 +60,7 @@ namespace RaspberrySensor
 
         private static void SetTimer(int intervalMs)
         {
-            _logger.Information("Set Timer");
+            _logger.Information($"Timer Set [{intervalMs}]ms");
             if (_sampleTimer != null)
             {
                 _sampleTimer.Stop();
@@ -62,12 +75,12 @@ namespace RaspberrySensor
             };
             _sampleTimer.Elapsed += (a, b) =>
             {
-                _logger.Debug("Timer Elapsed...");
+                _logger.Verbose("Timer Elapsed...");
                 try
                 {
                     var d = _device.ReadData();
 
-                    _logger.Information(d.ToString());
+                    _publisher.Publish(d);
                 }
                 catch (DHTException)
                 {
