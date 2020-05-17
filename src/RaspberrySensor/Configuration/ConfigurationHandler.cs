@@ -28,8 +28,6 @@ namespace RaspberrySensor.Configuration
             return _configurationProvider.TryGet(key, out value);
         }
 
-        
-
         public static T Get <T>(string key)
         {
             try

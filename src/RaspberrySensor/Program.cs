@@ -3,7 +3,6 @@ using RaspberrySensor.Device;
 using RaspberrySensor.Device.DHT;
 using RaspberrySensor.Publisher;
 using Serilog;
-using Serilog.Core;
 using System;
 using System.Timers;
 using Unosquare.RaspberryIO;
@@ -39,11 +38,15 @@ namespace RaspberrySensor
                 _device = new DummyDevice();
             }
             var publishKey = ConfigurationHandler.Get<string>("PublishKey");
-            var connectionString = ConfigurationHandler.Get<string>("EventHubAddress");
+            var connectionString = ConfigurationHandler.Get<string>("PublishAddress");
 
-            if (ConfigurationHandler.Get<bool>("EventHubEnabled"))
+            if (ConfigurationHandler.Get<bool>("UseEventHub"))
             {
                 _publisher = new EventHubPublisher(connectionString, publishKey);
+            }
+            else if (ConfigurationHandler.Get<bool>("UseInfluxDb"))
+            {
+                _publisher = new InfluxDbPublisher(connectionString, publishKey);
             }
             else
             {

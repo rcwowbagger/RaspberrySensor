@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RaspberrySensor.Publisher
 {
-    public class EventHubPublisher : IPublisher,IDisposable
+    public class EventHubPublisher : IPublisher
     {
         private readonly string _connectionString;
         private readonly ILogger _log;
