@@ -260,3 +260,7 @@ paket-files/
 __pycache__/
 *.pyc
 /src/RaspberrySensor/Properties
+
+#terraform
+.terraform
+.*\.tfstate.*
